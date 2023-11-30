@@ -1,7 +1,7 @@
 import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
-async function handleProfileSignup(firstName, lastName, fileName) {
+export default async function handleProfileSignup(firstName, lastName, fileName) {
   try {
     const userPromise = signUpUser(firstName, lastName);
     const photoPromise = uploadPhoto(fileName);
@@ -23,5 +23,3 @@ async function handleProfileSignup(firstName, lastName, fileName) {
     return []; // Return an empty array if an unexpected error occurs
   }
 }
-
-export default handleProfileSignup;
