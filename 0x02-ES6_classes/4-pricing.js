@@ -23,11 +23,16 @@ export default class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._amount} ${new Currency(this._currency.code, this._currency.name).displayFullCurrency()}`;
-
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
+    if (typeof amount !== 'number') {
+      throw new TypeError('amount must be a number');
+    }
+    if (typeof conversionRate !== 'number') {
+      throw new TypeError('conversionRate must be a number');
+    }
     return amount * conversionRate;
   }
 }
